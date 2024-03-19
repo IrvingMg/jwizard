@@ -16,3 +16,14 @@ func JsonToYaml(data []byte) ([]byte, error) {
 
 	return yaml.Marshal(&v)
 }
+
+func YamlToJson(data []byte) ([]byte, error) {
+	v := make(map[string]any)
+
+	err := yaml.Unmarshal(data, &v)
+	if err != nil {
+		return nil, err
+	}
+
+	return json.Marshal(&v)
+}
